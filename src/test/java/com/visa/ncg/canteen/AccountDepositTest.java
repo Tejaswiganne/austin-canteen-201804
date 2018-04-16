@@ -17,8 +17,6 @@ public class AccountDepositTest {
     ).isEqualTo(10);
   }
 
-  // need test to check initial balance of new account
-
   @Test
   public void deposit5DollarsAndThen10DollarsResultsIn15DollarBalance() throws Exception {
     Account account = new Account();
