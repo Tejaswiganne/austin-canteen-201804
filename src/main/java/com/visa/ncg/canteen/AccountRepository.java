@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class AccountRepository {
   private final Map<Long, Account> accountsMap = new HashMap<>();
 
-
+  private final AtomicLong idGenerator = new AtomicLong();
 
   public AccountRepository() {
   }
@@ -29,7 +30,7 @@ public class AccountRepository {
 
   public Account save(Account account) {
     if (account.getId() == null) {
-      account.setId(1L);
+      account.setId(idGenerator.getAndIncrement());
     }
     accountsMap.put(account.getId(), account);
     return account;

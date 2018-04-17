@@ -37,4 +37,16 @@ public class AccountRepositorySaveTest {
         .isNotNull();
   }
 
+  @Test
+  public void saveTwoNewAccountsAssignsUniqueIds() throws Exception {
+    Account account1 = new Account();
+    Account account2 = new Account();
+    AccountRepository accountRepository = new AccountRepository();
+    accountRepository.save(account1);
+    accountRepository.save(account2);
+
+    assertThat(account1.getId())
+        .describedAs("Two newly saved accounts must have different IDs.")
+        .isNotEqualTo(account2.getId());
+  }
 }
