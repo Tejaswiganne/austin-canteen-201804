@@ -21,4 +21,20 @@ public class AccountRepositorySaveTest {
         .describedAs("Account saved must be found by the ID it was assigned: " + savedAccount.getId())
         .isNotNull();
   }
+
+  @Test
+  public void saveAccountWithIdDoesNotChange() throws Exception {
+    AccountRepository accountRepository = new AccountRepository();
+    Account account = new Account();
+    account.setId(12L);
+
+    Account savedAccount = accountRepository.save(account);
+
+    assertThat(savedAccount.getId())
+        .isEqualTo(12L);
+
+    assertThat(accountRepository.findOne(12L))
+        .isNotNull();
+  }
+
 }

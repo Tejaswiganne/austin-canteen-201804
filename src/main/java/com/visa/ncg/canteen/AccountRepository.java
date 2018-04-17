@@ -28,7 +28,9 @@ public class AccountRepository {
   }
 
   public Account save(Account account) {
-    account.setId(1L);
+    if (account.getId() == null) {
+      account.setId(1L);
+    }
     accountsMap.put(account.getId(), account);
     return account;
   }
