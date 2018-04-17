@@ -42,4 +42,18 @@ public class AccountRepositoryFindTest {
         .isNull();
   }
 
+  @Test
+  public void findExistingAccountReturnsAccount() throws Exception {
+    List<Account> accounts = new ArrayList<>();
+    Account a1 = new Account();
+    a1.setId(1L);
+    accounts.add(a1);
+
+    AccountRepository accountRepository = new AccountRepository(accounts);
+
+    assertThat(accountRepository.findOne(1L))
+        .isEqualTo(a1);
+
+  }
+
 }
