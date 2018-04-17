@@ -8,6 +8,8 @@ import java.util.Map;
 public class AccountRepository {
   private final Map<Long, Account> accountsMap = new HashMap<>();
 
+
+
   public AccountRepository() {
   }
 
@@ -23,5 +25,11 @@ public class AccountRepository {
 
   public Account findOne(Long id) {
     return accountsMap.get(id);
+  }
+
+  public Account save(Account account) {
+    account.setId(1L);
+    accountsMap.put(account.getId(), account);
+    return account;
   }
 }
