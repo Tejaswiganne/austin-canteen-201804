@@ -34,4 +34,12 @@ public class AccountRepositoryFindTest {
         .containsAll(accounts);
   }
 
+  @Test
+  public void findAccountForNonExistentIdReturnsNull() throws Exception {
+    AccountRepository accountRepository = new AccountRepository();
+
+    assertThat(accountRepository.findOne(2L))
+        .isNull();
+  }
+
 }

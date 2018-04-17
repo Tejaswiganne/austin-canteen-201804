@@ -18,4 +18,7 @@ public class AccountRepository {
     return myAccounts;
   }
 
+  public Account findOne(Long id) {
+    return null;
+  }
 }
