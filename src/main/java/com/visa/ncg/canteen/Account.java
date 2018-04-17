@@ -9,20 +9,29 @@ public class Account {
   }
 
   public void deposit(int amount) {
-    if (amount <= 0) {
-      throw new InvalidAmountException("Amount of " + amount + " is not valid, must be greater than zero.");
-    }
+    validateAmount(amount);
     balance += amount;
   }
 
   public void withdraw(int amount) {
-    if (amount <= 0 ) {
-      throw new InvalidAmountException("Amount of " + amount + " is not valid, must be greater than zero.");
-    }
-    if (balance < amount) {
-      throw new InsufficientBalanceException("Can't withdraw " + amount + " as balance is currently " + balance);
-    }
-
+    validateAmount(amount);
+    validateSufficientBalance(amount);
     balance = balance - amount;
+  }
+
+  private void validateSufficientBalance(int amount) {
+    if (balance < amount) {
+      throw new InsufficientBalanceException(
+          "Can't withdraw " + amount
+              + " as balance is currently " + balance);
+    }
+  }
+
+  private void validateAmount(int amount) {
+    if (amount <= 0) {
+      throw new InvalidAmountException(
+          "Amount of " + amount
+              + " is not valid, must be greater than zero.");
+    }
   }
 }
