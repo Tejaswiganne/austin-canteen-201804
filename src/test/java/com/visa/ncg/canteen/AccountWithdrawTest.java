@@ -3,6 +3,7 @@ package com.visa.ncg.canteen;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AccountWithdrawTest {
   @Test
@@ -27,6 +28,16 @@ public class AccountWithdrawTest {
 
     assertThat(account.balance())
         .isEqualTo(12);
+  }
+
+  @Test
+  public void negativeWithdrawalThrowsInvalidAmountException() throws Exception {
+    Account account = new Account();
+
+    assertThatThrownBy(() -> {
+      account.withdraw(-1);
+    })
+    .isInstanceOf(InvalidAmountException.class);
   }
 
 }

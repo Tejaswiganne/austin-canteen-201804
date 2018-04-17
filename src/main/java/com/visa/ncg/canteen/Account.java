@@ -13,6 +13,9 @@ public class Account {
   }
 
   public void withdraw(int amount) {
+    if (amount < 0 ) {
+      throw new InvalidAmountException("Amount of " + amount + " is not valid, must be greater than zero.");
+    }
     balance = balance - amount;
   }
 }
