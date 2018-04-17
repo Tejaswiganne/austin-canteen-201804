@@ -4,7 +4,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class AccountRepository {
-  public List<Account> findAll() {
-    return Collections.emptyList();
+  private final List<Account> myAccounts;
+
+  public AccountRepository() {
+    myAccounts = Collections.emptyList();
   }
+
+  public AccountRepository(List<Account> accounts) {
+    myAccounts = accounts;
+  }
+
+  public List<Account> findAll() {
+    return myAccounts;
+  }
+
 }

@@ -3,6 +3,7 @@ package com.visa.ncg.canteen;
 public class Account {
 
   private int balance;
+  private Long id;
 
   public int balance() {
     return balance;
@@ -33,5 +34,13 @@ public class Account {
           "Amount of " + amount
               + " is not valid, must be greater than zero.");
     }
+  }
+
+  public void setId(Long newId) {
+    id = newId;
+  }
+
+  public Long getId() {
+    return id;
   }
 }

@@ -2,6 +2,9 @@ package com.visa.ncg.canteen;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccountRepositoryFindTest {
@@ -12,6 +15,23 @@ public class AccountRepositoryFindTest {
 
     assertThat(accountRepository.findAll())
         .isEmpty();
+  }
+
+  @Test
+  public void findAllForRepositoryWithTwoAccountsReturnsItInList() throws Exception {
+    List<Account> accounts = new ArrayList<>();
+    Account a1 = new Account();
+    a1.setId(1L);
+    Account a2 = new Account();
+    a2.setId(2L);
+    accounts.add(a1);
+    accounts.add(a2);
+
+    AccountRepository accountRepository = new AccountRepository(accounts);
+
+    assertThat(accountRepository.findAll())
+        .hasSize(2)
+        .containsAll(accounts);
   }
 
 }
