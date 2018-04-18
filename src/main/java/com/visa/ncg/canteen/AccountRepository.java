@@ -1,11 +1,14 @@
 package com.visa.ncg.canteen;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Component
 public class AccountRepository {
   private final Map<Long, Account> accountsMap = new HashMap<>();
 
@@ -30,7 +33,7 @@ public class AccountRepository {
 
   public Account save(Account account) {
     if (account.getId() == null) {
-      account.setId(idGenerator.getAndIncrement());
+      account.setId(idGenerator.incrementAndGet());
     }
     accountsMap.put(account.getId(), account);
     return account;
