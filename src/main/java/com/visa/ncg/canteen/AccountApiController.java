@@ -12,7 +12,7 @@ public class AccountApiController {
       long id = Long.parseLong(idString);
       Account account = new Account();
       account.setId(id);
-      account.deposit(5);
+      account.deposit(10);
       AccountResponse accountResponse = new AccountResponse();
       accountResponse.setId(account.getId());
       accountResponse.setBalance(account.balance());
