@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountApiController {
 
     @GetMapping("/api/accounts/{accountId}")
-    public Account accountInfo(@PathVariable("accountId") String idString) {
+    public AccountResponse accountInfo(@PathVariable("accountId") String idString) {
       long id = Long.parseLong(idString);
       Account account = new Account();
       account.setId(id);
-      account.deposit(10);
-      return account;
+      account.deposit(5);
+      AccountResponse accountResponse = new AccountResponse();
+      accountResponse.setId(account.getId());
+      accountResponse.setBalance(account.balance());
+      return accountResponse;
     }
 
 }
