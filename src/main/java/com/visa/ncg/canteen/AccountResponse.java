@@ -6,6 +6,14 @@ public class AccountResponse {
   private int balance;
   private String name;
 
+  public static AccountResponse fromAccount(Account account) {
+    AccountResponse accountResponse = new AccountResponse();
+    accountResponse.setId(account.getId());
+    accountResponse.setBalance(account.balance());
+    accountResponse.setName(account.name());
+    return accountResponse;
+  }
+
   public long getId() {
     return id;
   }

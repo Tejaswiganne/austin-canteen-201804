@@ -24,10 +24,7 @@ public class AccountWebController {
       throw new NoSuchAccountException();
     }
 
-    AccountResponse accountResponse = new AccountResponse();
-    accountResponse.setId(account.getId());
-    accountResponse.setName(account.name());
-    accountResponse.setBalance(account.balance());
+    AccountResponse accountResponse = AccountResponse.fromAccount(account);
     model.addAttribute("account", accountResponse);
     return "account-view";
   }
