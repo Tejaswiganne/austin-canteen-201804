@@ -20,6 +20,9 @@ public class AccountWebController {
   public String accountView(@PathVariable("id") String id, Model model) {
     Long accountId = Long.parseLong(id);
     Account account = accountRepository.findOne(accountId);
+    if (account == null) {
+      throw new NoSuchAccountException();
+    }
 
     AccountResponse accountResponse = new AccountResponse();
     accountResponse.setId(account.getId());
