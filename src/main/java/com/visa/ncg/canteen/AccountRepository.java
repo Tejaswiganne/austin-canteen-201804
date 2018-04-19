@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class AccountRepository {
   private final Map<Long, Account> accountsMap = new HashMap<>();
 
-  private final AtomicLong idGenerator = new AtomicLong();
+  private final AtomicLong idGenerator = new AtomicLong(1L);
 
   public AccountRepository() {
   }
@@ -33,7 +33,7 @@ public class AccountRepository {
 
   public Account save(Account account) {
     if (account.getId() == null) {
-      account.setId(idGenerator.incrementAndGet());
+      account.setId(idGenerator.getAndIncrement());
     }
     accountsMap.put(account.getId(), account);
     return account;
