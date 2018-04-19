@@ -4,6 +4,7 @@ public class AccountResponse {
 
   private long id;
   private int balance;
+  private String name;
 
   public long getId() {
     return id;
@@ -19,5 +20,13 @@ public class AccountResponse {
 
   public void setBalance(int balance) {
     this.balance = balance;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 }

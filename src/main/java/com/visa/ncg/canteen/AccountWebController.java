@@ -23,6 +23,7 @@ public class AccountWebController {
 
     AccountResponse accountResponse = new AccountResponse();
     accountResponse.setId(account.getId());
+    accountResponse.setName(account.name());
     accountResponse.setBalance(account.balance());
     model.addAttribute("account", accountResponse);
     return "account-view";

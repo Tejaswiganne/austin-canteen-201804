@@ -4,6 +4,7 @@ public class Account {
 
   private int balance;
   private Long id;
+  private String name;
 
   public int balance() {
     return balance;
@@ -42,5 +43,13 @@ public class Account {
 
   public Long getId() {
     return id;
+  }
+
+  public void changeNameTo(String newName) {
+    name = newName;
+  }
+
+  public String name() {
+    return name;
   }
 }
