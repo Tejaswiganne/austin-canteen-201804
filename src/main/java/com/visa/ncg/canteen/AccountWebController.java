@@ -5,13 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/account")
 public class AccountWebController {
 
   private AccountRepository accountRepository;
@@ -21,7 +19,7 @@ public class AccountWebController {
     this.accountRepository = accountRepository;
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/account/{id}")
   public String accountView(@PathVariable("id") String id, Model model) {
     Long accountId = Long.parseLong(id);
     Account account = accountRepository.findOne(accountId);
@@ -34,7 +32,7 @@ public class AccountWebController {
     return "account-view";
   }
 
-  @GetMapping()
+  @GetMapping("/account")
   public String allAccounts(Model model) {
     List<Account> accounts = accountRepository.findAll();
 
@@ -45,4 +43,5 @@ public class AccountWebController {
     model.addAttribute("accounts", responses);
     return "all-accounts";
   }
+
 }

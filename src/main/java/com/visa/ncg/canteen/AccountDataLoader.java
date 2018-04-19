@@ -17,7 +17,7 @@ public class AccountDataLoader implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     Account account = new Account();
-    account.deposit(12);
+    account.deposit(10);
     account.changeNameTo("Luxuries");
     accountRepository.save(account);
     account = new Account();

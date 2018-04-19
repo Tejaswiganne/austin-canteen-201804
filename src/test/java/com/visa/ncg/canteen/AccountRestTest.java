@@ -24,7 +24,7 @@ public class AccountRestTest {
 
   @Test
   public void getReturnsJsonContainingBalance() throws Exception {
-    MvcResult result = mockMvc.perform(get("/api/accounts/123"))
+    MvcResult result = mockMvc.perform(get("/api/accounts/1"))
                               .andExpect(status().isOk())
                               .andReturn();
     String body = result.getResponse().getContentAsString();
