@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.Matchers.instanceOf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -35,6 +37,15 @@ public class AccountViewWebIntegrationTest {
   public void getOfNonExistentAccountReturns404() throws Exception {
     mockMvc.perform(get("/account/9999"))
            .andExpect(status().isNotFound());
+  }
+
+  @Test
+  public void allAccountsShouldReturnListOfAccountResponse() throws Exception {
+    mockMvc.perform(get("/account"))
+           .andExpect(status().isOk())
+           .andExpect(model().attributeExists("accounts"))
+           .andExpect(model().attribute("accounts", instanceOf(ArrayList.class)))
+           .andExpect(view().name("all-accounts"));
   }
 
 }
