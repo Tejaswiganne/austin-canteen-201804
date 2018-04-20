@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

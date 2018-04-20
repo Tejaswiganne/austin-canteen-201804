@@ -1,5 +1,7 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.rest;
 
+import com.visa.ncg.canteen.domain.Account;
+import com.visa.ncg.canteen.domain.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

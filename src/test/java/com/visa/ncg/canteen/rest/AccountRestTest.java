@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.rest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

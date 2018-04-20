@@ -1,5 +1,9 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.web;
 
+import com.visa.ncg.canteen.domain.Account;
+import com.visa.ncg.canteen.domain.AccountRepository;
+import com.visa.ncg.canteen.domain.CurrencyService;
+import com.visa.ncg.canteen.rest.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +19,12 @@ import java.util.stream.Collectors;
 public class AccountWebController {
 
   private AccountRepository accountRepository;
+  private CurrencyService currencyService;
 
   @Autowired
-  public AccountWebController(AccountRepository accountRepository) {
+  public AccountWebController(AccountRepository accountRepository, CurrencyService currencyService) {
     this.accountRepository = accountRepository;
+    this.currencyService = currencyService;
   }
 
   @GetMapping("/account/{id}")
@@ -29,8 +35,12 @@ public class AccountWebController {
       throw new NoSuchAccountException();
     }
 
-    AccountResponse accountResponse = AccountResponse.fromAccount(account);
-    model.addAttribute("account", accountResponse);
+    AccountView accountView = AccountView.fromAccount(account);
+
+    int balanceInGbp = currencyService.convertToGbp(account.balance());
+    accountView.setGbpBalance(balanceInGbp);
+
+    model.addAttribute("account", accountView);
     return "account-view";
   }
 

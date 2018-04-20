@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +47,6 @@ public class CreateAccountWebIntegrationTest {
            .andExpect(status().isOk())
            .andExpect(view().name("account-view"))
            .andExpect(model().attributeExists("account"))
-           .andExpect(model().attribute("account", instanceOf(AccountResponse.class)));
+           .andExpect(model().attribute("account", instanceOf(AccountView.class)));
   }
 }

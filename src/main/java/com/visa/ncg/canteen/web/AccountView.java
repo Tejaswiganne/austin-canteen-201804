@@ -1,17 +1,28 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.web;
 
-public class AccountResponse {
+import com.visa.ncg.canteen.domain.Account;
+
+public class AccountView {
 
   private long id;
   private int balance;
   private String name;
+  private int gbpBalance;
 
-  public static AccountResponse fromAccount(Account account) {
-    AccountResponse accountResponse = new AccountResponse();
+  public static AccountView fromAccount(Account account) {
+    AccountView accountResponse = new AccountView();
     accountResponse.setId(account.getId());
     accountResponse.setBalance(account.balance());
     accountResponse.setName(account.name());
     return accountResponse;
+  }
+
+  public int getGbpBalance() {
+    return gbpBalance;
+  }
+
+  public void setGbpBalance(int gbpBalance) {
+    this.gbpBalance = gbpBalance;
   }
 
   public long getId() {

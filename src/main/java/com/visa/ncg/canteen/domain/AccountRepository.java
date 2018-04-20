@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.domain;
 
 import org.springframework.stereotype.Component;
 

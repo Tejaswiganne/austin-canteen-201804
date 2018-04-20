@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.domain;
 
 public class InsufficientBalanceException extends RuntimeException {
   public InsufficientBalanceException() {

@@ -1,5 +1,7 @@
 package com.visa.ncg.canteen;
 
+import com.visa.ncg.canteen.domain.Account;
+import com.visa.ncg.canteen.domain.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
