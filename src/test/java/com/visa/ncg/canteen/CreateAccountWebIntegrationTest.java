@@ -10,8 +10,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import static org.hamcrest.Matchers.instanceOf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -43,6 +45,8 @@ public class CreateAccountWebIntegrationTest {
                                  .andReturn();
     mockMvc.perform(get(mvcResult.getResponse().getRedirectedUrl()))
            .andExpect(status().isOk())
-           .andExpect(view().name("all-accounts"));
+           .andExpect(view().name("account-view"))
+           .andExpect(model().attributeExists("account"))
+           .andExpect(model().attribute("account", instanceOf(AccountResponse.class)));
   }
 }

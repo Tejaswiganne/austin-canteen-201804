@@ -57,6 +57,6 @@ public class AccountWebController {
     Account account = new Account();
     account.changeNameTo(name);
     account = accountRepository.save(account);
-    return "redirect:/account";
+    return "redirect:/account/" + account.getId();
   }
 }
