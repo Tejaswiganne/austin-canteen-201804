@@ -5,6 +5,7 @@ public class Account {
   private int balance;
   private Long id;
   private String name;
+  private int overdraftLimit;
 
   public int balance() {
     return balance;
@@ -51,5 +52,14 @@ public class Account {
 
   public String name() {
     return name;
+  }
+
+  public void limitOverdraftTo(int newOverdraftLimit) {
+    overdraftLimit = newOverdraftLimit;
+  }
+
+  public boolean isOverdrawn() {
+    // decide if overdrawn
+    return false;
   }
 }

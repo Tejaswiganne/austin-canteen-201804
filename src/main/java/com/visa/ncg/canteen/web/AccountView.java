@@ -8,13 +8,23 @@ public class AccountView {
   private int balance;
   private String name;
   private int gbpBalance;
+  private boolean isOverdrawn;
 
   public static AccountView fromAccount(Account account) {
-    AccountView accountResponse = new AccountView();
-    accountResponse.setId(account.getId());
-    accountResponse.setBalance(account.balance());
-    accountResponse.setName(account.name());
-    return accountResponse;
+    AccountView accountView = new AccountView();
+    accountView.setId(account.getId());
+    accountView.setBalance(account.balance());
+    accountView.setName(account.name());
+    accountView.setOverdrawn(account.isOverdrawn());
+    return accountView;
+  }
+
+  public boolean isOverdrawn() {
+    return isOverdrawn;
+  }
+
+  public void setOverdrawn(boolean overdrawn) {
+    isOverdrawn = overdrawn;
   }
 
   public int getGbpBalance() {

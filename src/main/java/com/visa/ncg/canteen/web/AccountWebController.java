@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -58,15 +57,25 @@ public class AccountWebController {
 
   @GetMapping("/create-account")
   public String createAccountForm(Model model) {
-    model.addAttribute("accountName", "default");
+    CreateForm createForm = new CreateForm();
+    // initialize the default values for the form
+    createForm.setInitialDeposit(10);
+    createForm.setOverdraftLimit(100);
+
+    model.addAttribute("createForm", createForm);
+
     return "create-account";
   }
 
   @PostMapping("/create-account")
-  public String createAccount(@ModelAttribute("accountName") String name, Model model) {
+  public String createAccount(CreateForm createForm) {
     Account account = new Account();
-    account.changeNameTo(name);
+    account.changeNameTo(createForm.getAccountName());
+    account.deposit(createForm.getInitialDeposit());
+    account.limitOverdraftTo(createForm.getOverdraftLimit());
+
     account = accountRepository.save(account);
+
     return "redirect:/account/" + account.getId();
   }
 }
