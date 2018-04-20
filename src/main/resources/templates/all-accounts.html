@@ -6,14 +6,20 @@
 </head>
 <body>
 <table>
-  <tr>
-    <th>Account Name</th>
-    <th>Balance</th>
-  </tr>
-  <tr th:each="account : ${accounts}">
-    <td><span th:text="${account.name}">Fun</span></td>
-    <td><span th:text="${account.balance}">99</span></td>
-  </tr>
+
+    <tr>
+        <th>Account Name</th>
+        <th>Balance</th>
+    </tr>
+
+    <tr th:each="account : ${accounts}">
+        <td><a th:href="@{/account/__${account.id}__}">
+            <span th:text="${account.name}">'Account Name'</span>
+        </a></td>
+        <td th:text="${account.balance}">'Account Balance'</td>
+    </tr>
+
 </table>
+
 </body>
 </html>
